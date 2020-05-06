@@ -38,4 +38,9 @@ public class ControllerContactos {
 		}
 	}
 	
+	@RequestMapping(path="/afegir", method = RequestMethod.POST)
+	@ResponseBody
+	public void añadirNuevoContacto(@RequestParam String id, @RequestParam String nom, @RequestParam String telefon) {
+		agenda.inserta(id, nom, telefon);
+	}
 }
