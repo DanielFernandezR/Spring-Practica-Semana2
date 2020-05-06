@@ -1,7 +1,9 @@
 package org.formacio.mvc;
 
 import org.formacio.repositori.AgendaService;
+import org.formacio.repositori.Persona;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +27,12 @@ public class ControllerContactos {
 	@ResponseBody
 	public String obtenerTelefonoContacto(@RequestParam String id) {
 		return agenda.recupera(id).getTelefon();
+	}
+	
+	@RequestMapping(path="/contacte/{id}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
+	@ResponseBody
+	public Persona obtenerContactoJSON(@PathVariable String id) {
+		return agenda.recupera(id);
 	}
 	
 }
